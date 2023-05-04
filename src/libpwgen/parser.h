@@ -1,6 +1,6 @@
 #pragma once
-#include <time.h>
-#include <string.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
 void parsmake(char** words_array);
