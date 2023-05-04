@@ -1,5 +1,5 @@
 #include "fileread.h"
-int count_words = 10;
+int count_words = 1775;
 const int str_size = 50;
 
 char** array_words()
