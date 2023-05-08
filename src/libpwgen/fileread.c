@@ -1,4 +1,5 @@
 #include "fileread.h"
+#include "parser.h"
 int count_words = 1775;
 const int str_size = 50;
 
@@ -26,4 +27,6 @@ char** array_words()
         i++;
     }
     return words_array;
+    free(words_array);
+    free(words_array[i]);
 }
