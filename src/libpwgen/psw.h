@@ -2,6 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <time.h>
 
-char* parsmake(char** words_array);
+void pass_string(char** words_array);
+
