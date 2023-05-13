@@ -8,4 +8,3 @@ void edit_string(char*);
 void add_num(char*, char*);
 void insert_word(char*, char*, int);
 void add_special(char*, char*);
-extern const int LEN_PAS;
