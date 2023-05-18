@@ -2,6 +2,7 @@
 #include <fileread.h>
 #include <parser.h>
 #include <psw.h>
+char full_pass[256] = " ";
 void pass_string(char** words_array)
 {
     char* psw_str = words_array[rand() % 1775];
@@ -11,17 +12,18 @@ void pass_string(char** words_array)
         len_psw_str = strlen(psw_str);
     }
     edit_string(psw_str);
+    
 }
-void edit_string(char* str)
+char* edit_string(char* str)
 {
     char arr_num[10] = "0123456789";
     char arr_special[8] = "@#$+=-_/";
     int len_str = strlen(str);
-    char full_pass[101] = " ";
     add_num(full_pass, arr_num);
     insert_word(full_pass, str, len_str);
     add_special(full_pass, arr_special);
     puts(full_pass);
+    return full_pass;
 }
 void add_num(char* full_pass, char* arr_num)
 {
