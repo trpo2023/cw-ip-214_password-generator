@@ -1,4 +1,4 @@
 pwgen (analogue password generator)  
-В АВТОРАХ ДОЛЖЕН ЕЩЕ БЫТЬ ВИТАЛИЙ МАРТЫНОВ
+В АВТОРАХ ДОЛЖЕН ЕЩЕ БЫТЬ VitalyMart
 Contributors:
-VitalyMart
+
