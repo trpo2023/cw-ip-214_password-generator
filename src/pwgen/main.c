@@ -1,4 +1,5 @@
 #include "fileread.h"
+#include "params.h"
 #include "parser.h"
 #include "psw.h"
 int main(int argc, char* argv[])
