@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 void pass_string(char**, int);
 char* edit_string(char*, int);
 void add_num(char*, char*, int);
