@@ -1,0 +1,3 @@
+Length: 81
+Count: 2
+Special symbols: 1
