@@ -1,5 +1,5 @@
-#include "parser.h"
-#include "fileread.h"
+#include <fileread.h>
+#include <parser.h>
 
 char* parsmake(char** words_array)
 {

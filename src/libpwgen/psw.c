@@ -34,9 +34,11 @@ void insert_word(char* full_pass, char* str, int len_str, int len_pas)
     int pos_value = len_pas - len_str - 1;
     int rnd_pos_word = rand() % pos_value;
     int j = 0;
-    for (int i = rnd_pos_word; i < len_str + rnd_pos_word - 1; i++) {
-        full_pass[i] = str[j];
-        j++;
+    for (int i = rnd_pos_word; i < len_str + rnd_pos_word; i++) {
+        if (str[j] != '\n') {
+            full_pass[i] = str[j];
+            j++;
+        }
     }
 }
 void add_special(char* full_pass, char* arr_special, int len_pas)

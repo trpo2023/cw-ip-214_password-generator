@@ -1,5 +1,5 @@
-#include "fileread.h"
-#include "parser.h"
+#include <fileread.h>
+#include <parser.h>
 int count_words = 1775;
 const int str_size = 50;
 
