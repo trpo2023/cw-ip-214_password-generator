@@ -4,10 +4,11 @@
 char full_pass[256] = " ";
 void pass_string(char** words_array, int len_pas)
 {
-    char* psw_str = words_array[rand() % 1775];
+    int word_count = 1775;
+    char* psw_str = words_array[rand() % word_count];
     int len_psw_str = strlen(psw_str);
     while (len_psw_str + 2 > len_pas) {
-        psw_str = words_array[rand() % 1775];
+        psw_str = words_array[rand() % word_count];
         len_psw_str = strlen(psw_str);
     }
     edit_string(psw_str, len_pas);
@@ -47,5 +48,5 @@ void add_special(char* full_pass, char* arr_special, int len_pas)
     while (!isdigit(full_pass[rnd_num])) {
         rnd_num = rand() % len_pas;
     }
-    full_pass[rnd_num] = arr_special[rand() % 6];
+    full_pass[rnd_num] = arr_special[rand() % sizeof(arr_special)];
 }
