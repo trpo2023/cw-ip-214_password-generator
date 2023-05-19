@@ -1,13 +1,14 @@
-#include "fileread.h"
-#include "params.h"
-#include "parser.h"
-#include "psw.h"
+#include <fileread.h>
+#include <params.h>
+#include <parser.h>
+#include <psw.h>
+#include <word.h>
 int main(int argc, char* argv[])
 {
     srand(time(NULL));
     char choice;
     printf("Do you want enter input data? y/n\n");
-    scanf("%c", &choice);
+    scanf(" %c", &choice);
     if (choice == 'y') {
         if ((argc > 3 && argc != 1) || argc == 2) {
             printf("Usage: %s LEN_PAS val_pas\n", argv[0]);
@@ -18,9 +19,21 @@ int main(int argc, char* argv[])
         scanf("%d", &len_pas);
         printf("Enter amount password: ");
         scanf("%d", &val_pas);
-        char** words_array = array_words();
-        for (int i = 0; i < val_pas; i++) {
-            pass_string(words_array, len_pas);
+        printf("Do you want input own word? y/n\n");
+        char choice_word;
+        scanf(" %c", &choice_word);
+        if (choice_word == 'y') {
+            char word[50];
+            printf("Enter own word: ");
+            scanf("%s", word);
+            for (int i = 0; i < val_pas; i++) {
+                pass_with_word(word, len_pas);
+            }
+        } else {
+            char** words_array = array_words();
+            for (int i = 0; i < val_pas; i++) {
+                pass_string(words_array, len_pas);
+            }
         }
     } else {
         FILE* f;
