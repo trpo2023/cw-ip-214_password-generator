@@ -1,6 +1,8 @@
 #include "../src/libpwgen/psw.h"
 #include <ctest.h>
 #include <ctype.h>
+#include <parser.h>
+#include <fileread.h>
 
 CTEST(ctest, DIGIT)
 {
@@ -55,4 +57,23 @@ CTEST(ctest, LENGTH_STRING)
     }
     printf("%d", count);
     ASSERT_DBL_NEAR(expected, reality);
+}
+
+CTEST(ctest, NOT_NULL_USER_ARGS)
+{
+    long* arr = args();
+    ASSERT_NOT_NULL(arr);
+}
+
+CTEST(ctest, NOT_NULL_WORD_LIST)
+{
+    char** words_array=array_words();
+    ASSERT_NOT_NULL(words_array);
+}
+
+CTEST(ctest, NOT_NULL_WORD)
+{
+    char** words_array=array_words();
+    char* pars= parsmake(words_array);
+    ASSERT_NOT_NULL(pars);
 }
