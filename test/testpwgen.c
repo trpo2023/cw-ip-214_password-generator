@@ -1,4 +1,5 @@
-#include "../src/libpwgen/psw.h"
+#include <params.h>
+#include <psw.h>
 #include <ctest.h>
 #include <ctype.h>
 #include <fileread.h>
@@ -8,26 +9,35 @@ CTEST(ctest, DIGIT)
 {
     int expected = 0;
     int reality = 1;
-    char test_str[] = "apple ";
-    char* password = (char*)malloc(sizeof(char) * (strlen(test_str) + 2));
-    password = edit_string(test_str, (strlen(test_str) + 2));
-    for (int i = 0; i < sizeof(password); i++) {
-        if (isdigit(password[i])) {
+    int* len = args();
+    char** words_array = array_words();
+    char* test_str= parsmake(words_array);
+    while(strlen(test_str) >= len[0] - 1)
+         test_str= parsmake(words_array);
+    char* password = (char*)malloc(sizeof(char) * len[0]);
+    password = edit_string(test_str, len[0]);
+    for (int i = 0; i < len[0]; i++) {
+        if (isdigit(password[i]) || password[i]=='0') {
             expected = 1;
             break;
         }
     }
-    ASSERT_DBL_NEAR(expected, reality);
+    ASSERT_EQUAL(expected, reality);
 }
+
 CTEST(ctest, SPECIAL_SYMBOL)
 {
     char arr_special[8] = "@#$+=-_/";
     int expected = 0;
     int reality = 1;
-    char test_str[] = "apple ";
-    char* password = (char*)malloc(sizeof(char) * (10));
-    password = edit_string(test_str, 10);
-    for (int i = 0; i < sizeof(password); i++) {
+    int* len=args();
+    char** words_array = array_words();
+    char* test_str= parsmake(words_array);
+    while(strlen(test_str) >= len[0] - 1)
+         test_str= parsmake(words_array);
+    char* password = (char*)malloc(sizeof(char) * len[0]);
+    password = edit_string(test_str, len[0]);
+    for (int i = 0; i < len[0]; i++) {
         for (int j = 0; j < strlen(arr_special); j++) {
             if (arr_special[j] == password[i]) {
                 expected = 1;
@@ -35,32 +45,35 @@ CTEST(ctest, SPECIAL_SYMBOL)
             }
         }
     }
-    ASSERT_DBL_NEAR(expected, reality);
+    ASSERT_EQUAL(expected, reality);
 }
+
 CTEST(ctest, LENGTH_STRING)
 {
     int expected = 0;
     int reality = 1;
-    char test_str[] = "apple ";
-    char* password = (char*)malloc(sizeof(char) * (10));
+    int* len=args();
+    char** words_array = array_words();
+    char* test_str= parsmake(words_array);
+    while(strlen(test_str) >= len[0] - 1)
+         test_str= parsmake(words_array);
+    char* password = (char*)malloc(sizeof(char) * len[0]);
     int count = 0;
-    password = edit_string(test_str, 10);
-    for (int i = 0; i < strlen(password); i++) {
-        if ((password[i] >= 'a') && (password[i] < 'z')) {
-            count++;
-            printf("%d", i);
+    password = edit_string(test_str, len[0]);
+    for (int i = 0; i < strlen(test_str) - 1; i++) {
+        if ((test_str[i] >= 'a') && (test_str[i] <= 'z')) 
+            expected = 1;
+        else{
+            expected = 0;
+            break;
         }
     }
-    if (count == 5) {
-        expected = 1;
-    }
-    printf("%d", count);
-    ASSERT_DBL_NEAR(expected, reality);
+    ASSERT_EQUAL(expected, reality);
 }
 
 CTEST(ctest, NOT_NULL_USER_ARGS)
 {
-    long* arr = args();
+    int* arr = args();
     ASSERT_NOT_NULL(arr);
 }
 

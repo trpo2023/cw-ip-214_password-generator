@@ -4,4 +4,4 @@
 #include <stdlib.h>
 #include <string.h>
 
-long* args();
+int* args();

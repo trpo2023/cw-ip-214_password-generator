@@ -1,13 +1,12 @@
 #include <params.h>
 
-long* args()
+int* args()
 {
-    static long args[3] = {0};
+    int* args = (int*)malloc(sizeof(int) * 3);
     FILE* fp;
     char str[50];
     char num[50] = "";
     if ((fp = fopen("params.txt", "r")) == NULL) {
-        printf("ERROR_OF_OPENING");
         return NULL;
     }
     int k = 0;
@@ -25,7 +24,6 @@ long* args()
         k++;
         memset(num, 0, sizeof(num));
     }
-
-    printf("%ld\n%ld\n%ld\n", args[0], args[1], args[2]);
+    fclose(fp);
     return args;
 }

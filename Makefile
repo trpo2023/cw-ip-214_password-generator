@@ -20,8 +20,7 @@ SOURCE_MAIN = $(WAY_SOURCE_MAIN)main.c
 SOURCE_CODE_FILE_TEST = $(wildcard $(WAY_SOURCE_CODE_FILE_TEST)*.c)
 OBJECT_CODE_FILE_TEST = $(patsubst $(WAY_SOURCE_CODE_FILE_TEST)%.c, $(WAY_OBJECT_TEST)%.o, $(SOURCE_CODE_FILE_TEST))
 
-all: clang $(WAY_TARGET_TEST)$(TARGET_TEST) test $(WAY_TARGET)$(TARGET) run clean 
-
+all: clang $(WAY_TARGET_TEST)$(TARGET_TEST) test $(WAY_TARGET)$(TARGET) run clean
 #main
 $(WAY_TARGET)$(TARGET) : $(WAY_OBJECT_FILES)main.o $(WAY_OBJECT_LIB)libmy.a
 	$(CC) $(CFLAGS) $(OBJECT_CODE_FILES) $(WAY_OBJECT_FILES)main.o -L$(WAY_OBJECT_LIB) -lmy -o $(WAY_TARGET)$(TARGET)
@@ -46,11 +45,12 @@ $(WAY_OBJECT_TEST)%.o : $(WAY_SOURCE_CODE_FILE_TEST)%.c
 	$(CC) -c $(CPPFLAGS) -I$(WAY_SOURCE_CODE_FILES) -I$(WAY_SOURCE_CODE_FILE_TEST) -I thirdparty/ $< -w -o $@
 ###
 
+
 clang :
 	clang-format -i --verbose $(SOURCE_CODE_FILES) $(WAY_SOURCE_MAIN)main.c
 
 run :
-	./$(WAY_TARGET)$(TARGET)
+	./$(WAY_TARGET)$(TARGET) $(ARG_1)  $(ARG_2)
 
 test :
 	./$(WAY_TARGET_TEST)$(TARGET_TEST)
