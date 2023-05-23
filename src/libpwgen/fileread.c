@@ -1,5 +1,5 @@
 #include <fileread.h>
-#include <parser.h>
+#include <rndword.h>
 int count_words = 1775;
 int str_size = 256;
 

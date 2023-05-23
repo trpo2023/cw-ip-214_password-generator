@@ -1,5 +1,5 @@
 #include <fileread.h>
-#include <parser.h>
+#include <rndword.h>
 #include <psw.h>
 char full_pass[256] = " ";
 void pass_string(char** words_array, int len_pas)

@@ -1,6 +1,6 @@
 #include <fileread.h>
 #include <params.h>
-#include <parser.h>
+#include <rndword.h>
 #include <psw.h>
 #include <word.h>
 int main(int argc, char* argv[])
@@ -15,6 +15,7 @@ int main(int argc, char* argv[])
         for (int i = 0; i < val_pas; i++) {
             pass_string(words_array, len_pas);
         }
+        free(words_array);
         return 0;
     }
     printf("Do you want to enter input data? Enter 'y' for yes, 'n' for no.\n");
@@ -98,5 +99,6 @@ int main(int argc, char* argv[])
         }
         fclose(f);
     }
+    
     return 0;
 }

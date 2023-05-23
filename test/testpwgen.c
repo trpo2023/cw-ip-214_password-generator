@@ -3,7 +3,7 @@
 #include <ctest.h>
 #include <ctype.h>
 #include <fileread.h>
-#include <parser.h>
+#include <rndword.h>
 
 CTEST(ctest, DIGIT)
 {
