@@ -1,13 +1,14 @@
 #include <fileread.h>
 #include <parser.h>
 int count_words = 1775;
-int str_size = 50;
+int str_size = 256;
 
 char** array_words()
 {
     char** words_array = (char**)malloc(sizeof(char*) * count_words);
-    for (int i = 0; i < count_words; i++)
+    for (int i = 0; i < count_words; i++) {
         words_array[i] = (char*)malloc(sizeof(char) * str_size);
+    }
     int i = 0;
     char str[str_size];
     char* estr;
@@ -26,5 +27,6 @@ char** array_words()
         strcpy(words_array[i], estr);
         i++;
     }
+    fclose(file);
     return words_array;
 }
