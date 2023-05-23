@@ -15,7 +15,7 @@ CTEST(ctest, DIGIT)
  
     while(strlen(test_str) >= len[0] - 1)
          test_str= parsmake(words_array);
-    char* password;   
+    char* password=NULL;   
     if(len[0]){
         password = (char*)malloc(sizeof(char) * len[0]);
         password = edit_string(test_str, len[0]); 
@@ -25,8 +25,14 @@ CTEST(ctest, DIGIT)
               break;
             }
         }
+    
     }
     else expected = 1;
+    if(!password)
+        free(password); 
+    free(words_array);
+    free(len);
+    free(test_str);
     ASSERT_EQUAL(expected, reality);
 }
 
@@ -54,6 +60,11 @@ CTEST(ctest, SPECIAL_SYMBOL)
     }
     }
     else expected = 1;
+    if(!password)
+        free(password); 
+    free(words_array);
+    free(len);
+    free(test_str);
     ASSERT_EQUAL(expected, reality);
 }
 
@@ -81,6 +92,11 @@ CTEST(ctest, LENGTH_STRING)
     }
     }
     else expected = 1;
+    if(!password)
+        free(password); 
+    free(words_array);
+    free(len);
+    free(test_str);
     ASSERT_EQUAL(expected, reality);
 }
 

@@ -1,7 +1,7 @@
 #include <fileread.h>
 #include <params.h>
-#include <rndword.h>
 #include <psw.h>
+#include <rndword.h>
 #include <word.h>
 int main(int argc, char* argv[])
 {
@@ -99,6 +99,6 @@ int main(int argc, char* argv[])
         }
         fclose(f);
     }
-    
+
     return 0;
 }
