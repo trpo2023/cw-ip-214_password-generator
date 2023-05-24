@@ -4,5 +4,5 @@
 *.swp
 .vscode
 *.a
-main
-main_test
+bin/
+*.txt
