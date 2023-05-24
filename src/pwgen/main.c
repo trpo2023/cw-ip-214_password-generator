@@ -7,13 +7,14 @@ int main(int argc, char* argv[])
 {
     srand(time(NULL));
     int len_pas = 0, val_pas = 0;
+    int count_words = 1775;
     char choice;
     if (argc == 3) {
         len_pas = atoi(argv[1]);
         val_pas = atoi(argv[2]);
-        char** words_array = array_words();
+        char** words_array = array_words(count_words);
         for (int i = 0; i < val_pas; i++) {
-            pass_string(words_array, len_pas);
+            pass_string(words_array, len_pas, count_words);
         }
         free(words_array);
         return 0;
@@ -57,9 +58,9 @@ int main(int argc, char* argv[])
                 pass_with_word(word, len_pas);
             }
         } else {
-            char** words_array = array_words();
+            char** words_array = array_words(count_words);
             for (int i = 0; i < val_pas; i++) {
-                pass_string(words_array, len_pas);
+                pass_string(words_array, len_pas, count_words);
             }
         }
     } else {
@@ -85,16 +86,16 @@ int main(int argc, char* argv[])
                 printf("Invalid input.\n");
                 return 0;
             }
-            char** words_array = array_words();
+            char** words_array = array_words(count_words);
             for (int i = 0; i < val_pas; i++) {
-                pass_string(words_array, len_pas);
+                pass_string(words_array, len_pas, count_words);
             }
         } else {
             len_pas = args()[0];
             val_pas = args()[1];
-            char** words_array = array_words();
+            char** words_array = array_words(count_words);
             for (int i = 0; i < val_pas; i++) {
-                pass_string(words_array, len_pas);
+                pass_string(words_array, len_pas, count_words);
             }
         }
         fclose(f);

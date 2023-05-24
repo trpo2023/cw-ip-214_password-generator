@@ -2,7 +2,7 @@
 
 int* args()
 {
-    int* args = (int*)malloc(sizeof(int) * 3);
+    int* args = (int*)malloc(sizeof(int) * 2);
     FILE* fp;
     char str[50];
     char num[50] = "";

@@ -1,11 +1,10 @@
 #include <fileread.h>
 #include <rndword.h>
 
-char* parsmake(char** words_array)
+char* parsmake(char** words_array, int count_words)
 {
-    int word_count = 1775;
     srand(time(NULL));
-    int rnd = rand() % word_count;
+    int rnd = rand() % count_words;
     char* word = words_array[rnd];
     return word;
 }

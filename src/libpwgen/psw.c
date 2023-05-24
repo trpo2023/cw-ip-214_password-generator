@@ -1,20 +1,19 @@
 #include <fileread.h>
 #include <psw.h>
 #include <rndword.h>
-char full_pass[256] = " ";
-void pass_string(char** words_array, int len_pas)
+void pass_string(char** words_array, int len_pas, int count_words)
 {
-    int word_count = 1775;
-    char* psw_str = words_array[rand() % word_count];
+    char* psw_str = words_array[rand() % count_words];
     int len_psw_str = strlen(psw_str);
     while (len_psw_str + 2 > len_pas) {
-        psw_str = words_array[rand() % word_count];
+        psw_str = words_array[rand() % count_words];
         len_psw_str = strlen(psw_str);
     }
     edit_string(psw_str, len_pas);
 }
 char* edit_string(char* str, int len_pas)
 {
+    static char full_pass[256] = " ";
     char arr_num[10] = "0123456789";
     char arr_special[8] = "@#$+=-_/";
     int len_str = strlen(str);

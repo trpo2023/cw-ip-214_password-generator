@@ -1,32 +1,25 @@
 #include <fileread.h>
 #include <rndword.h>
-int count_words = 1775;
-int str_size = 256;
-
-char** array_words()
-{
-    char** words_array = (char**)malloc(sizeof(char*) * count_words);
-    for (int i = 0; i < count_words; i++) {
-        words_array[i] = (char*)malloc(sizeof(char) * str_size);
-    }
-    int i = 0;
-    char str[str_size];
-    char* estr;
-    FILE* file;
-    file = fopen("vocabulary.txt", "r");
-    while (!feof(file)) {
-        estr = fgets(str, sizeof(str), file);
-        if (estr == NULL) {
-            if (feof(file) != 0)
-                break;
-            else {
-                printf("ERROR");
-                break;
-            }
-        }
-        strcpy(words_array[i], estr);
-        i++;
-    }
-    fclose(file);
-    return words_array;
+char** array_words(int count_words) 
+{ 
+    const int STR_SIZE = 256; 
+    char** words_array = malloc(sizeof(char*) * count_words); 
+    for (int i = 0; i < count_words; i++) { 
+        words_array[i] = calloc(STR_SIZE, sizeof(char)); 
+    } 
+    int i = 0; 
+    FILE* file = fopen("vocabulary.txt", "r"); 
+    if (!file) { 
+        printf("Error: cannot open file.\n"); 
+        exit(1); 
+    } 
+    while (i < count_words && fgets(words_array[i], STR_SIZE, file)) { 
+        int len = strlen(words_array[i]); 
+        if (len > 0 && words_array[i][len - 1] == '\n') { 
+            words_array[i][len - 1] = '\0'; 
+        } 
+        i++; 
+    } 
+    fclose(file); 
+    return words_array; 
 }
