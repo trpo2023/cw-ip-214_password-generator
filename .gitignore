@@ -3,3 +3,6 @@
 *.out
 *.swp
 .vscode
+*.a
+main
+main_test
