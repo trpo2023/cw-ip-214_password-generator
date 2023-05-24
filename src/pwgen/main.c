@@ -15,6 +15,7 @@ int main(int argc, char* argv[])
         char** words_array = array_words(count_words);
         for (int i = 0; i < val_pas; i++) {
             pass_string(words_array, len_pas, count_words);
+            puts(full_pass);
         }
         free(words_array);
         return 0;
@@ -42,8 +43,7 @@ int main(int argc, char* argv[])
             printf("Invalid input.\n");
             return 0;
         }
-        printf("Do you want to input your own word? Enter 'y' for yes, 'n' for "
-               "no.\n");
+        printf("Do you want to input your own word? Enter 'y' for yes, 'n' for no.\n");
         char choice_word;
         scanf(" %c", &choice_word);
         if (choice_word != 'y' && choice_word != 'n') {
@@ -56,11 +56,13 @@ int main(int argc, char* argv[])
             scanf("%s", word);
             for (int i = 0; i < val_pas; i++) {
                 pass_with_word(word, len_pas);
+                puts(full_pass);
             }
         } else {
             char** words_array = array_words(count_words);
             for (int i = 0; i < val_pas; i++) {
                 pass_string(words_array, len_pas, count_words);
+                puts(full_pass);
             }
         }
     } else {
@@ -89,6 +91,7 @@ int main(int argc, char* argv[])
             char** words_array = array_words(count_words);
             for (int i = 0; i < val_pas; i++) {
                 pass_string(words_array, len_pas, count_words);
+                puts(full_pass);
             }
         } else {
             len_pas = args()[0];
@@ -96,6 +99,7 @@ int main(int argc, char* argv[])
             char** words_array = array_words(count_words);
             for (int i = 0; i < val_pas; i++) {
                 pass_string(words_array, len_pas, count_words);
+                puts(full_pass);
             }
         }
         fclose(f);

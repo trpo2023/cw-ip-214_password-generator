@@ -6,100 +6,88 @@
 #include <rndword.h>
 #define count_words 1775
 
-CTEST(ctest, DIGIT)
+CTEST(ctest, SPECIAL1)
 {
-    int expected = 0;
-    int reality = 1;
-    int* len = args();
-    char** words_array = array_words(count_words);
-    char* test_str= parsmake(words_array, count_words);
- 
-    while(strlen(test_str) >= len[0] - 1)
-         test_str= parsmake(words_array, count_words);
-    char* password=NULL;   
-    if(len[0]){
-        password = (char*)malloc(sizeof(char) * len[0]);
-        password = edit_string(test_str, len[0]); 
-         for (int i = 0; i < len[0]; i++) {
-            if (isdigit(password[i]) || password[i]=='0') {
-              expected = 1;
-              break;
-            }
-        }
-    
-    }
-    else expected = 1;
-    if(!password)
-        free(password); 
-    free(words_array);
-    free(len);
-    free(test_str);
-    ASSERT_EQUAL(expected, reality);
-}
-
-CTEST(ctest, SPECIAL_SYMBOL)
-{
+    int expected = 1;
+    int reality = 0;
     char arr_special[8] = "@#$+=-_/";
-    int expected = 0;
-    int reality = 1;
-    int* len=args();
-    char** words_array = array_words(count_words);
-    char* test_str= parsmake(words_array, count_words);
-    while(strlen(test_str) >= len[0] - 1)
-         test_str= parsmake(words_array, count_words);
-    char* password;   
-    if(len[0]){
-    char* password = (char*)malloc(sizeof(char) * len[0]);
-    password = edit_string(test_str, len[0]);
-    for (int i = 0; i < len[0]; i++) {
-        for (int j = 0; j < strlen(arr_special); j++) {
-            if (arr_special[j] == password[i]) {
-                expected = 1;
+    char str1[] = "ab3def5";
+    add_special(str1, arr_special, 7);
+    for(int i = 0; i < 7; i++){
+        for(int j = 0; j < 8; j++){
+            if(arr_special[j] == str1[i]){
+                reality = 1;
                 break;
             }
         }
     }
+    ASSERT_EQUAL(expected, reality);
+}
+CTEST(ctest, SPECIAL2)
+{
+    int expected = 1;
+    int reality = 0;
+    char arr_special[8] = "@#$+=-_/";
+    char str1[] = "123456789";
+    add_special(str1, arr_special, 9);
+    for(int i = 0; i < 9; i++){
+        for(int j = 0; j < 8; j++){
+            if(arr_special[j] == str1[i]){
+                reality = 1;
+                break;
+            }
+        }
     }
-    else expected = 1;
-    if(!password)
-        free(password); 
-    free(words_array);
-    free(len);
-    free(test_str);
+    ASSERT_EQUAL(expected, reality);
+}
+CTEST(ctest, SPECIAL3)
+{
+    int expected = 1;
+    int reality = 0;
+    char arr_special[8] = "@#$+=-_/";
+    char str1[] = "asdsas6";
+    add_special(str1, arr_special, 7);
+    for(int i = 0; i < 7; i++){
+        for(int j = 0; j < 8; j++){
+            if(arr_special[j] == str1[i]){
+                reality = 1;
+                break;
+            }
+        }
+    }
+    ASSERT_EQUAL(expected, reality);
+}
+CTEST(ctest, NUMBERS1)
+{
+    int expected = 1;
+    int reality = 1;
+    char arr_num[10] = "0123456789";
+    char str1[10] = "aaabbbccce";
+    add_num(str1, arr_num, 10);
+    for(int i = 0; i < 10; i++){
+        if((str1[i] < '0') || (str1[i] > '9')){
+            reality = 0;
+        }
+    }
+    ASSERT_EQUAL(expected, reality);
+}
+CTEST(ctest, NUMBERS2)
+{
+    int expected = 1;
+    int reality = 1;
+    char arr_num[10] = "0123456789";
+    char str1[10] = "aaabbbccce";
+    int len = 10;
+    add_num(str1, arr_num, strlen(str1));
+    int i = 0;
+    while(str1[i]){
+        i++;
+    }
+    if(len != i) reality = 0;
     ASSERT_EQUAL(expected, reality);
 }
 
-CTEST(ctest, LENGTH_STRING)
-{
-    int expected = 0;
-    int reality = 1;
-    int* len=args();
-    char** words_array = array_words(count_words);
-    char* test_str= parsmake(words_array, count_words);
-    while(strlen(test_str) >= len[0] - 1)
-         test_str= parsmake(words_array, count_words);
-    char* password;   
-    if(len[0]){
-    char* password = (char*)malloc(sizeof(char) * len[0]);
-    int count = 0;
-    password = edit_string(test_str, len[0]);
-    for (int i = 0; i < strlen(test_str) - 1; i++) {
-        if ((test_str[i] >= 'a') && (test_str[i] <= 'z')) 
-            expected = 1;
-        else{
-            expected = 0;
-            break;
-        }
-    }
-    }
-    else expected = 1;
-    if(!password)
-        free(password); 
-    free(words_array);
-    free(len);
-    free(test_str);
-    ASSERT_EQUAL(expected, reality);
-}
+
 
 CTEST(ctest, NOT_NULL_USER_ARGS)
 {
