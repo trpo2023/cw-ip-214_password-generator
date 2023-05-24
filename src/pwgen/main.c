@@ -43,7 +43,8 @@ int main(int argc, char* argv[])
             printf("Invalid input.\n");
             return 0;
         }
-        printf("Do you want to input your own word? Enter 'y' for yes, 'n' for no.\n");
+        printf("Do you want to input your own word? Enter 'y' for yes, 'n' for "
+               "no.\n");
         char choice_word;
         scanf(" %c", &choice_word);
         if (choice_word != 'y' && choice_word != 'n') {

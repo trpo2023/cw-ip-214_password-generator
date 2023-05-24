@@ -1,3 +1,3 @@
 #pragma once
 
-char** array_words(int );
+char** array_words(int);

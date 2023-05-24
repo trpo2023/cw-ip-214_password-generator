@@ -4,7 +4,6 @@
 char full_pass[256] = " ";
 void pass_string(char** words_array, int len_pas, int count_words)
 {
-    
     char* psw_str = words_array[rand() % count_words];
     int len_psw_str = strlen(psw_str);
     while (len_psw_str + 2 > len_pas) {
@@ -15,7 +14,6 @@ void pass_string(char** words_array, int len_pas, int count_words)
 }
 char* edit_string(char* str, int len_pas)
 {
-   
     char arr_num[10] = "0123456789";
     char arr_special[8] = "@#$+=-_/";
     int len_str = strlen(str);
