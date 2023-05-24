@@ -4,17 +4,18 @@
 #include <ctype.h>
 #include <fileread.h>
 #include <rndword.h>
+#define count_words 1775
 
 CTEST(ctest, DIGIT)
 {
     int expected = 0;
     int reality = 1;
     int* len = args();
-    char** words_array = array_words();
-    char* test_str= parsmake(words_array);
+    char** words_array = array_words(count_words);
+    char* test_str= parsmake(words_array, count_words);
  
     while(strlen(test_str) >= len[0] - 1)
-         test_str= parsmake(words_array);
+         test_str= parsmake(words_array, count_words);
     char* password=NULL;   
     if(len[0]){
         password = (char*)malloc(sizeof(char) * len[0]);
@@ -42,10 +43,10 @@ CTEST(ctest, SPECIAL_SYMBOL)
     int expected = 0;
     int reality = 1;
     int* len=args();
-    char** words_array = array_words();
-    char* test_str= parsmake(words_array);
+    char** words_array = array_words(count_words);
+    char* test_str= parsmake(words_array, count_words);
     while(strlen(test_str) >= len[0] - 1)
-         test_str= parsmake(words_array);
+         test_str= parsmake(words_array, count_words);
     char* password;   
     if(len[0]){
     char* password = (char*)malloc(sizeof(char) * len[0]);
@@ -73,10 +74,10 @@ CTEST(ctest, LENGTH_STRING)
     int expected = 0;
     int reality = 1;
     int* len=args();
-    char** words_array = array_words();
-    char* test_str= parsmake(words_array);
+    char** words_array = array_words(count_words);
+    char* test_str= parsmake(words_array, count_words);
     while(strlen(test_str) >= len[0] - 1)
-         test_str= parsmake(words_array);
+         test_str= parsmake(words_array, count_words);
     char* password;   
     if(len[0]){
     char* password = (char*)malloc(sizeof(char) * len[0]);
@@ -108,13 +109,13 @@ CTEST(ctest, NOT_NULL_USER_ARGS)
 
 CTEST(ctest, NOT_NULL_WORD_LIST)
 {
-    char** words_array = array_words();
+    char** words_array = array_words(count_words);
     ASSERT_NOT_NULL(words_array);
 }
 
 CTEST(ctest, NOT_NULL_WORD)
 {
-    char** words_array = array_words();
-    char* pars = parsmake(words_array);
+    char** words_array = array_words(count_words);
+    char* pars = parsmake(words_array, count_words);
     ASSERT_NOT_NULL(pars);
 }
