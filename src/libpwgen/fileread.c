@@ -3,7 +3,7 @@
 char** array_words(int count_words)
 {
     const int STR_SIZE = 256;
-    char** words_array = malloc(sizeof(char*) * count_words);
+    char** words_array = calloc(count_words, sizeof(char*));
     for (int i = 0; i < count_words; i++) {
         words_array[i] = calloc(STR_SIZE, sizeof(char));
     }
@@ -11,6 +11,7 @@ char** array_words(int count_words)
     FILE* file = fopen("vocabulary.txt", "r");
     if (!file) {
         printf("Error: cannot open file.\n");
+        free(words_array);
         exit(1);
     }
     while (i < count_words && fgets(words_array[i], STR_SIZE, file)) {

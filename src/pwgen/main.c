@@ -14,10 +14,10 @@ int main(int argc, char* argv[])
         val_pas = atoi(argv[2]);
         char** words_array = array_words(count_words);
         for (int i = 0; i < val_pas; i++) {
-            pass_string(words_array, len_pas, count_words);
+            char full_pass[256] = "";
+            pass_string(words_array, len_pas, count_words, full_pass);
             puts(full_pass);
         }
-        free(words_array);
         return 0;
     }
     printf("Do you want to enter input data? Enter 'y' for yes, 'n' for no.\n");
@@ -56,13 +56,15 @@ int main(int argc, char* argv[])
             printf("Enter own word: ");
             scanf("%s", word);
             for (int i = 0; i < val_pas; i++) {
-                pass_with_word(word, len_pas);
+                char full_pass[256] = "";
+                pass_with_word(word, len_pas, full_pass);
                 puts(full_pass);
             }
         } else {
             char** words_array = array_words(count_words);
             for (int i = 0; i < val_pas; i++) {
-                pass_string(words_array, len_pas, count_words);
+                char full_pass[256] = "";
+                pass_string(words_array, len_pas, count_words, full_pass);
                 puts(full_pass);
             }
         }
@@ -91,7 +93,8 @@ int main(int argc, char* argv[])
             }
             char** words_array = array_words(count_words);
             for (int i = 0; i < val_pas; i++) {
-                pass_string(words_array, len_pas, count_words);
+                char full_pass[256] = "";
+                pass_string(words_array, len_pas, count_words, full_pass);
                 puts(full_pass);
             }
         } else {
@@ -99,7 +102,8 @@ int main(int argc, char* argv[])
             val_pas = args()[1];
             char** words_array = array_words(count_words);
             for (int i = 0; i < val_pas; i++) {
-                pass_string(words_array, len_pas, count_words);
+                char full_pass[256] = "";
+                pass_string(words_array, len_pas, count_words, full_pass);
                 puts(full_pass);
             }
         }

@@ -2,11 +2,13 @@
 
 int* args()
 {
-    int* args = (int*)malloc(sizeof(int) * 2);
+    int parametrs = 2;
+    int* args = (int*)calloc(parametrs, sizeof(int));
     FILE* fp;
     char str[50];
     char num[50] = "";
     if ((fp = fopen("params.txt", "r")) == NULL) {
+        free(args);
         return NULL;
     }
     int k = 0;
