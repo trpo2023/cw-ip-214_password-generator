@@ -1,6 +1,6 @@
 #include <psw.h>
 #include <word.h>
-void pass_with_word(char* word, int len_pas)
+void pass_with_word(char* word, int len_pas, char* full_pass)
 {
     char* psw_str = word;
     int len_psw_str = strlen(psw_str);
@@ -11,5 +11,5 @@ void pass_with_word(char* word, int len_pas)
         psw_str = word;
         len_psw_str = strlen(psw_str);
     }
-    edit_string(psw_str, len_pas);
+    edit_string(psw_str, len_pas, full_pass);
 }
