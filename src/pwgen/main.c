@@ -22,15 +22,14 @@ int main(int argc, char* argv[])
         printf("Invalid input.\n");
         return 0;
     }
-    if (choice == 'y') {
+    if (choice != 'y') {
         if ((argc > 3 && argc != 1) || argc == 2) {
             printf("Usage: %s LEN_PAS val_pas\n", argv[0]);
             exit(1);
         }
-        user_input_passwords(count_words);
-    } else {
         file_input_passwords(count_words);
+    } else {
+        user_input_passwords(count_words);
     }
-
     return 0;
 }
